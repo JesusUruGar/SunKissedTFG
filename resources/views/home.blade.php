@@ -4,8 +4,8 @@
 
 @section('content')
 
-<div class="">
-    <img src="{{ asset('images/banner.webp') }}" alt="Banner">
+<div class="w-full">
+    <img src="{{ asset('images/banner.webp') }}" alt="Banner" class="w-full">
 </div>
 
 <div class="container mx-auto px-4 py-10">

@@ -12,4 +12,14 @@ class AdminController extends Controller
         return view('admin.index');
     }
 
+    public function indexUsers()
+    {
+        return view('admin.users');
+    }
+
+    public function indexProducts()
+    {
+        return view('admin.products');
+    }
+
 }

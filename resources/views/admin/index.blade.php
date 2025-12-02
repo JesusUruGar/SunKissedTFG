@@ -4,9 +4,34 @@
 
 @section('content')
 
-<div class="container mx-auto px-4 py-10">
+<div class="container flex flex-col items-center mx-auto px-4 py-10">
 
-    <h1 class="text-4xl font-bold">Panel de administración</h1>
+    <h1 class="text-4xl font-bold mb-7">Panel de administración</h1>
+
+    <div class="flex w-fit items-center gap-6 border border-neutral-200 p-6 shadow-sm">
+
+        <!-- USERS -->
+        <div>
+            <a href="{{ route('admin.users') }}" class="size-20 bg-blue-400 flex justify-center items-center text-white shadow-md hover:bg-blue-500 transition-colors duration-200 cursor-pointer border-2 border-blue-500">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-10">
+                    <path d="M4.5 6.375a4.125 4.125 0 1 1 8.25 0 4.125 4.125 0 0 1-8.25 0ZM14.25 8.625a3.375 3.375 0 1 1 6.75 0 3.375 3.375 0 0 1-6.75 0ZM1.5 19.125a7.125 7.125 0 0 1 14.25 0v.003l-.001.119a.75.75 0 0 1-.363.63 13.067 13.067 0 0 1-6.761 1.873c-2.472 0-4.786-.684-6.76-1.873a.75.75 0 0 1-.364-.63l-.001-.122ZM17.25 19.128l-.001.144a2.25 2.25 0 0 1-.233.96 10.088 10.088 0 0 0 5.06-1.01.75.75 0 0 0 .42-.643 4.875 4.875 0 0 0-6.957-4.611 8.586 8.586 0 0 1 1.71 5.157v.003Z" />
+                </svg>
+            </a>
+            <h2 class="text-center font-medium mt-1">Usuarios</h2>
+        </div>
+
+        <!-- PRODUCTS -->
+        <div>
+            <a href="{{ route('admin.products') }}" class="size-20 bg-orange-400 flex justify-center items-center text-white shadow-md hover:bg-orange-500 transition-colors duration-200 cursor-pointer border-2 border-orange-500">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-10">
+                    <path d="M3.375 3C2.339 3 1.5 3.84 1.5 4.875v.75c0 1.036.84 1.875 1.875 1.875h17.25c1.035 0 1.875-.84 1.875-1.875v-.75C22.5 3.839 21.66 3 20.625 3H3.375Z" />
+                    <path fill-rule="evenodd" d="m3.087 9 .54 9.176A3 3 0 0 0 6.62 21h10.757a3 3 0 0 0 2.995-2.824L20.913 9H3.087Zm6.163 3.75A.75.75 0 0 1 10 12h4a.75.75 0 0 1 0 1.5h-4a.75.75 0 0 1-.75-.75Z" clip-rule="evenodd" />
+                </svg>
+            </a>
+            <h2 class="text-center font-medium mt-1">Productos</h2>
+        </div>
+
+    </div>
 
 </div>
 @endsection

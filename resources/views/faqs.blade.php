@@ -14,45 +14,45 @@
 
         <!-- Pregunta 1 -->
         <h2 id="accordion-card-heading-1">
-            <button type="button" class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-body rounded-base shadow-xs border border-default hover:text-heading hover:bg-neutral-secondary-medium gap-3 aria-expanded:rounded-b-none aria-expanded=:shadow-none" data-accordion-target="#accordion-card-body-1" aria-expanded="false" aria-controls="accordion-card-body-1">
+            <button type="button" class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-body shadow-xs border border-default hover:text-heading hover:bg-neutral-secondary-medium gap-3 aria-expanded:rounded-b-none aria-expanded=:shadow-none" data-accordion-target="#accordion-card-body-1" aria-expanded="false" aria-controls="accordion-card-body-1">
                 <span>¿De donde surge SunKissed?</span>
                 <svg data-accordion-icon class="w-5 h-5 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m5 15 7-7 7 7"/></svg>
             </button>
         </h2>
-        <div id="accordion-card-body-1" class="hidden border border-t-0 border-default rounded-b-base shadow-xs bg-white" aria-labelledby="accordion-card-heading-1">
+        <div id="accordion-card-body-1" class="hidden border border-t-0 border-default shadow-xs bg-white" aria-labelledby="accordion-card-heading-1">
             <div class="p-4 md:p-5">
 
-                <p class="mb-2 text-body">Flowbite is an open-source library of interactive components built on top of Tailwind CSS including buttons, dropdowns, modals, navbars, and more.</p>
+                <p class="mb-2 text-body"></p>
 
             </div>
         </div>
 
         <!-- Pregunta 2 -->
         <h2 id="accordion-card-heading-2" class="mt-4">
-            <button type="button" class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-body rounded-base shadow-xs border border-default hover:text-heading hover:bg-neutral-secondary-medium gap-3 aria-expanded:rounded-b-none aria-expanded=:shadow-none" data-accordion-target="#accordion-card-body-2" aria-expanded="false" aria-controls="accordion-card-body-2">
+            <button type="button" class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-body shadow-xs border border-default hover:text-heading hover:bg-neutral-secondary-medium gap-3 aria-expanded:rounded-b-none aria-expanded=:shadow-none" data-accordion-target="#accordion-card-body-2" aria-expanded="false" aria-controls="accordion-card-body-2">
                 <span>¿En que se diferencia de otras marcas emergentes?</span>
                 <svg data-accordion-icon class="w-5 h-5 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m5 15 7-7 7 7"/></svg>
             </button>
         </h2>
-        <div id="accordion-card-body-2" class="hidden border border-t-0 border-default rounded-b-base shadow-xs bg-white" aria-labelledby="accordion-card-heading-2">
+        <div id="accordion-card-body-2" class="hidden border border-t-0 border-default shadow-xs bg-white" aria-labelledby="accordion-card-heading-2">
             <div class="p-4 md:p-5">
 
-                <p class="mb-2 text-body">Flowbite is first conceptualized and designed using the Figma software so everything you see in the library has a design equivalent in our Figma file.</p>
+                <p class="mb-2 text-body"></p>
 
             </div>
         </div>
 
         <!-- Pregunta 3 -->
         <h2 id="accordion-card-heading-3" class="mt-4">
-            <button type="button" class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-body rounded-base shadow-xs border border-default hover:text-heading hover:bg-neutral-secondary-medium gap-3 aria-expanded:rounded-b-none aria-expanded=:shadow-none" data-accordion-target="#accordion-card-body-3" aria-expanded="false" aria-controls="accordion-card-body-3">
+            <button type="button" class="flex items-center justify-between w-full p-5 font-medium rtl:text-right text-body shadow-xs border border-default hover:text-heading hover:bg-neutral-secondary-medium gap-3 aria-expanded:rounded-b-none aria-expanded=:shadow-none" data-accordion-target="#accordion-card-body-3" aria-expanded="false" aria-controls="accordion-card-body-3">
                 <span>¿Que objetivos tenemos a corto y largo plazo?</span>
                 <svg data-accordion-icon class="w-5 h-5 rotate-180 shrink-0" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m5 15 7-7 7 7"/></svg>
             </button>
         </h2>
-        <div id="accordion-card-body-3" class="hidden border border-t-0 border-default rounded-b-base shadow-xs bg-white" aria-labelledby="accordion-card-heading-3">
+        <div id="accordion-card-body-3" class="hidden border border-t-0 border-default shadow-xs bg-white" aria-labelledby="accordion-card-heading-3">
             <div class="p-4 md:p-5">
 
-                <p class="mb-2 text-body">The main difference is that the core components from Flowbite are open source under the MIT license, whereas Tailwind UI is a paid product. Another difference is that Flowbite relies on smaller and standalone components, whereas Tailwind UI offers sections of pages.</p>
+                <p class="mb-2 text-body"></p>
 
             </div>
         </div>

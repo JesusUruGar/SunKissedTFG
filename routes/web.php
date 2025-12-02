@@ -33,6 +33,12 @@ Route::get('/product', [ProductController::class, 'index'])->name('product');
 // Admin dashboard
 Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
 
+// Users
+Route::get('/admin/users', [AdminController::class, 'indexUsers'])->name('admin.users');
+
+// Products
+Route::get('/admin/products', [AdminController::class, 'indexProducts'])->name('admin.products');
+
 //----------------------------------------
 // Cart routes
 //----------------------------------------
