@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Inicio - Mi E-commerce')
+@section('title', 'SUNKISSED')
 
 @section('content')
 
@@ -12,14 +12,14 @@
 
     <h1 class="text-4xl font-bold">Productos destacados ★★</h1>
 
-    <hr class="border-t-1 border-gray-300 mt-2 mb-4">
+    <hr class="border-t border-gray-300 mt-2 mb-4">
 
     <!-- PRODUCTOS DESTACADOS -->
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
         @for ($i = 0; $i < 10; $i++)
 
         <!-- PRODUCTO -->
-        <a href="">
+        <a href="{{ route('product') }}">
 
             <img src="{{ asset('images/camiseta.webp') }}" alt="Logo" class="hover:scale-105 transition-transform duration-300">
 

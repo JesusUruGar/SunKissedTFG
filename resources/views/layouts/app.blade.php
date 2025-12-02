@@ -6,7 +6,7 @@
     <title>@yield('title', 'Mi E-commerce')</title>
     @vite('resources/css/app.css') {{-- si usas vite --}}
 </head>
-<body class="bg-gray-50 text-gray-900">
+<body class="bg-white text-gray-900">
 
     {{-- Navbar global --}}
     @include('partials.navbar')
@@ -20,5 +20,6 @@
     @include('partials.footer')
 
     @vite('resources/js/app.js')
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@4.0.1/dist/flowbite.min.js"></script>
 </body>
 </html>
