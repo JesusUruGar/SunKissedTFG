@@ -29,16 +29,16 @@
     <h1 class="text-4xl font-bold mt-3">Productos</h1>
 
     <div class="mt-6 overflow-x-auto shadow-md">
-        <table class="min-w-full border border-black">
+        <table class="min-w-full border-2 border-orange-500">
             <thead class="bg-orange-500 text-white">
                 <tr>
-                    <th class="px-6 py-4 border-b border-black text-left">ID</th>
-                    <th class="px-6 py-4 border-b border-black text-left">Categoría</th>
-                    <th class="px-6 py-4 border-b border-black text-left">Nombre</th>
-                    <th class="px-6 py-4 border-b border-black text-left">Descripción</th>
-                    <th class="px-6 py-4 border-b border-black text-left">Precio</th>
-                    <th class="px-6 py-4 border-b border-black text-left">Stock</th>
-                    <th class="px-6 py-4 border-b border-black text-left">Acciones</th>
+                    <th class="px-6 py-4 border-b border-orange-500 text-left">ID</th>
+                    <th class="px-6 py-4 border-b border-orange-500 text-left">Categoría</th>
+                    <th class="px-6 py-4 border-b border-orange-500 text-left">Nombre</th>
+                    <th class="px-6 py-4 border-b border-orange-500 text-left">Descripción</th>
+                    <th class="px-6 py-4 border-b border-orange-500 text-left">Precio</th>
+                    <th class="px-6 py-4 border-b border-orange-500 text-left">Stock</th>
+                    <th class="px-6 py-4 border-b border-orange-500 text-left">Acciones</th>
                 </tr>
             </thead>
             <tbody>
@@ -46,16 +46,16 @@
                 {{-- @foreach($products as $product) --}}
 
                 <tr>
-                    <td class="px-6 py-4 border-b border-black"> 1 </td>
-                    <td class="px-6 py-4 border-b border-black"> Camiseta </td>
-                    <td class="px-6 py-4 border-b border-black"> LA DURA VIDA TEE </td>
-                    <td class="px-6 py-4 border-b border-black"> Camiseta blanca slim fit </td>
-                    <td class="px-6 py-4 border-b border-black"> 29.99$ </td>
-                    <td class="px-6 py-4 border-b border-black"> 255 </td>
+                    <td class="px-6 py-4 border-b border-orange-500"> 1 </td>
+                    <td class="px-6 py-4 border-b border-orange-500"> Camiseta </td>
+                    <td class="px-6 py-4 border-b border-orange-500"> LA DURA VIDA TEE </td>
+                    <td class="px-6 py-4 border-b border-orange-500"> Camiseta blanca slim fit </td>
+                    <td class="px-6 py-4 border-b border-orange-500"> 29.99$ </td>
+                    <td class="px-6 py-4 border-b border-orange-500"> 255 </td>
 
                     <!-- ACTIONS -->
-                    <td class="px-6 py-4 border-black">
-                        <div class="flex items-center gap-3"> 
+                    <td class="px-6 py-4 border-b border-orange-500">
+                        <div class="flex items-center gap-3">
 
                             <!-- EDIT -->
                             <a href="" class="text-blue-500">
@@ -63,7 +63,7 @@
                                     <path d="M21.731 2.269a2.625 2.625 0 0 0-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 0 0 0-3.712ZM19.513 8.199l-3.712-3.712-12.15 12.15a5.25 5.25 0 0 0-1.32 2.214l-.8 2.685a.75.75 0 0 0 .933.933l2.685-.8a5.25 5.25 0 0 0 2.214-1.32L19.513 8.2Z" />
                                 </svg>
                             </a>
-                            
+
                             <!-- DELETE -->
                             <form action="" method="POST" class="inline">
                                 <button type="submit" class="text-red-500 cursor-pointer" onclick="return confirm('¿Estás seguro de que deseas eliminar este usuario?')">

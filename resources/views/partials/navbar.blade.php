@@ -1,8 +1,8 @@
-<div class="bg-blue-700">
+{{-- <div class="bg-blue-700">
     <div class="container mx-auto px-4 py-2 text-white text-xs text-center">
         3 x 2 - No te pierdas la nueva oferta EXCLUSIVA en la WEB / ENTREGA INTERNACIONAL
     </div>
-</div>
+</div> --}}
 
 <nav class="bg-white">
     <div class="mx-auto px-5 py-2 flex justify-between items-center">
