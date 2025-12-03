@@ -24,7 +24,7 @@ Route::get('/brand', [BrandController::class, 'index'])->name('brand');
 Route::get('/faqs', [FAQsController::class, 'index'])->name('faqs');
 
 // Product
-Route::get('/product', [ProductController::class, 'index'])->name('product');
+Route::get('/product/{id}', [ProductController::class, 'index'])->name('product');
 
 //----------------------------------------
 // Admin routes

@@ -6,41 +6,46 @@
 
 <div class="container mx-auto px-4 py-10">
 
+    @if (!$product)
+
+        <h1 class="text-3xl font-bold mb-4">Producto no encontrado</h1>
+        <p class="text-gray-600">Lo sentimos, el producto que buscas no existe.</p>
+
+    @else
+
     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
 
-        <img src="{{ asset('images/camiseta.webp') }}" alt="Camiseta Sunkissed">
+        <img src="{{ asset('images/products/' . $product->images->first()->image_path) }}" alt="{{ $product->name }}">
 
+        <!-- PRODUCT INFO -->
         <div class="p-6">
 
-            <h1 class="text-3xl font-bold mb-4">LA DURA VIDA TEE</h1>
-            <p class="text-xl text-gray-700 mb-4">$29.99</p>
-            <p class="text-gray-600 mb-6">Experimenta la comodidad y el estilo con nuestra camiseta "LA DURA VIDA TEE". Hecha con materiales de alta calidad, esta camiseta es perfecta para cualquier ocasión.</p>
+            <h1 class="text-3xl font-bold mb-4">{{ $product->name }}</h1>
+            <p class="text-xl text-gray-700 mb-4">${{ $product->price }}</p>
+            <p class="text-gray-600 mb-6">{{ $product->description }}</p>
 
             <form action="">
 
-                <!-- TALLAS -->
+                <!-- SIZES -->
                 <fieldset>
                     <div class="flex items-center gap-3 mb-6">
 
-                        <label class="flex justify-center items-center border border-neutral-200 shadow-xs size-10 hover:border-neutral-500 transition-colors duration-200">
-                            <input type="radio" name="size" value="s" class="hidden"/>
-                            <span>S</span>
-                        </label>
+                        @foreach ($product->stocks as $stock)
 
-                        <label class="flex justify-center items-center border border-neutral-200 shadow-xs size-10 hover:border-neutral-500 transition-colors duration-200">
-                            <input type="radio" name="size" value="m" class="hidden"/>
-                            <span>M</span>
-                        </label>
+                            @if ($stock->quantity == 0)
 
-                        <label class="flex justify-center items-center border border-neutral-200 shadow-xs size-10 hover:border-neutral-500 transition-colors duration-200">
-                            <input type="radio" name="size" value="l" class="hidden"/>
-                            <span>L</span>
-                        </label>
+                            <div class="flex justify-center items-center border border-neutral-200 bg-neutral-200 text-body-subtle shadow-xs size-10 cursor-not-allowed">
+                                <span>{{ strtoupper($stock->size) }}</span>
+                            </div>
 
-                        <label class="flex justify-center items-center border border-neutral-200 shadow-xs size-10 hover:border-neutral-500 transition-colors duration-200">
-                            <input type="radio" name="size" value="xl" class="hidden"/>
-                            <span>XL</span>
-                        </label>
+                            @else
+                            <label class="flex justify-center items-center border border-neutral-200 shadow-xs size-10 hover:border-neutral-500 transition-colors duration-200">
+                                <input type="radio" name="size" value="{{ $stock->size }}" class="hidden"/>
+                                <span>{{ strtoupper($stock->size) }}</span>
+                            </label>
+                            @endif
+
+                        @endforeach
 
                     </div>
                 </fieldset>
@@ -57,29 +62,29 @@
 
         </div>
 
-
-
     </div>
 
-</div>
+    <!-- Script para manejar selección de tallas -->
+    <script>
+        document.querySelectorAll('input[name="size"]').forEach(radio => {
+            radio.addEventListener('change', function () {
 
-<!-- Script para manejar selección de tallas -->
-<script>
-    document.querySelectorAll('input[name="size"]').forEach(radio => {
-        radio.addEventListener('change', function () {
+                // Quitar estilos a TODOS los labels
+                document.querySelectorAll('label').forEach(label => {
+                    label.classList.remove('bg-black', 'text-white');
+                    label.classList.add('border-neutral-200');
+                });
 
-            // Quitar estilos a TODOS los labels
-            document.querySelectorAll('label').forEach(label => {
-                label.classList.remove('bg-black', 'text-white');
-                label.classList.add('border-neutral-200');
+                // Añadir estilos al label seleccionado
+                const label = this.closest('label');
+                label.classList.add('bg-black', 'text-white');
+                label.classList.remove('border-neutral-200');
             });
-
-            // Añadir estilos al label seleccionado
-            const label = this.closest('label');
-            label.classList.add('bg-black', 'text-white');
-            label.classList.remove('border-neutral-200');
         });
-    });
-</script>
+    </script>
+
+    @endif
+
+</div>
 
 @endsection

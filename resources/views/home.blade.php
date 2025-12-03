@@ -16,21 +16,21 @@
 
     <!-- PRODUCTOS DESTACADOS -->
     <div class="grid grid-cols-2 lg:grid-cols-4 gap-6">
-        @for ($i = 0; $i < 10; $i++)
+        @foreach ($products as $product)
 
         <!-- PRODUCTO -->
-        <a href="{{ route('product') }}">
+        <a href="{{ route('product', ['id' => $product->id]) }}">
 
-            <img src="{{ asset('images/camiseta.webp') }}" alt="Logo" class="hover:scale-105 transition-transform duration-300">
+            <img src="{{ asset('images/products/' . $product->images->first()->image_path) }}" alt="Logo" class="hover:scale-105 transition-transform duration-300">
 
             <div class="flex justify-between items-center mt-2">
-                <h2 class="text-sm">LA DURA VIDA TEE</h2>
-                <p class="text-sm">$29.99</p>
+                <h2 class="text-sm">{{ $product->name }}</h2>
+                <p class="text-sm">${{ $product->price }}</p>
             </div>
 
         </a>
 
-        @endfor
+        @endforeach
     </div>
 
 

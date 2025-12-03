@@ -34,6 +34,7 @@
                 <tr>
                     <th class="px-6 py-4 border-b border-orange-500 text-left">ID</th>
                     <th class="px-6 py-4 border-b border-orange-500 text-left">Categoría</th>
+                    <th class="px-6 py-4 border-b border-orange-500 text-left">IMG</th>
                     <th class="px-6 py-4 border-b border-orange-500 text-left">Nombre</th>
                     <th class="px-6 py-4 border-b border-orange-500 text-left">Descripción</th>
                     <th class="px-6 py-4 border-b border-orange-500 text-left">Precio</th>
@@ -43,15 +44,36 @@
             </thead>
             <tbody>
 
-                {{-- @foreach($products as $product) --}}
+                @foreach($products as $product)
 
                 <tr>
-                    <td class="px-6 py-4 border-b border-orange-500"> 1 </td>
-                    <td class="px-6 py-4 border-b border-orange-500"> Camiseta </td>
-                    <td class="px-6 py-4 border-b border-orange-500"> LA DURA VIDA TEE </td>
-                    <td class="px-6 py-4 border-b border-orange-500"> Camiseta blanca slim fit </td>
-                    <td class="px-6 py-4 border-b border-orange-500"> 29.99$ </td>
-                    <td class="px-6 py-4 border-b border-orange-500"> 255 </td>
+                    <td class="px-6 py-4 border-b border-orange-500"> {{ $product->id }} </td>
+                    <td class="px-6 py-4 border-b border-orange-500"> {{ $product->category->name ?? 'Sin categoría' }} </td>
+
+                    <!-- IMAGE -->
+                    <td class="min-w-30 px-6 py-4 border-b border-orange-500">
+                        @if($product->images->first())
+                            <img src="{{ asset('images/products/' . $product->images->first()->image_path) }}" alt="Imagen del producto" class="w-20 h-30 object-cover">
+                        @else
+                            <span class="text-sm text-body-subtle">No image</span>
+                        @endif
+                    </td>
+
+                    <td class="px-6 py-4 border-b border-orange-500"> {{ $product->name }} </td>
+                    <td class="px-6 py-4 border-b border-orange-500"> {{ $product->description }} </td>
+                    <td class="px-6 py-4 border-b border-orange-500"> {{ $product->price }}$ </td>
+
+                    <!-- STOCK -->
+                    <td class="min-w-25 px-6 py-4 border-b border-orange-500">
+                        <ul>
+                            @foreach ($product->stocks as $variant)
+                                <li class="mb-2">
+                                    <span class="font-bold">{{ $variant->size }}</span> - {{ $variant->quantity }}
+                                </li>
+                            @endforeach
+
+                        </ul>
+                    </td>
 
                     <!-- ACTIONS -->
                     <td class="px-6 py-4 border-b border-orange-500">
@@ -76,6 +98,8 @@
                         </div>
                     </td>
                 </tr>
+
+                @endforeach
 
             </tbody>
         </table>

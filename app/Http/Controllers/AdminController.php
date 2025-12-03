@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Product;
+use App\Models\User;
 
 class AdminController extends Controller
 {
@@ -14,12 +16,16 @@ class AdminController extends Controller
 
     public function indexUsers()
     {
-        return view('admin.users');
+        $users = User::orderBy('id','desc')->paginate(10);
+
+        return view('admin.users', compact('users'));
     }
 
     public function indexProducts()
     {
-        return view('admin.products');
+        $products = Product::orderBy('id','desc')->paginate(10);
+
+        return view('admin.products', compact('products'));
     }
 
 }

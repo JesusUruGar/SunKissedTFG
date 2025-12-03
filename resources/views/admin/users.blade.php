@@ -41,13 +41,13 @@
             </thead>
             <tbody>
 
-                {{-- @foreach($users as $user) --}}
+                @foreach($users as $user)
 
                 <tr>
-                    <td class="px-6 py-4 border-b border-blue-500"> 1 </td>
-                    <td class="px-6 py-4 border-b border-blue-500"> Paco </td>
-                    <td class="px-6 py-4 border-b border-blue-500"> pacofiestas@gmail.com </td>
-                    <td class="px-6 py-4 border-b border-blue-500"> admin </td>
+                    <td class="px-6 py-4 border-b border-blue-500"> {{ $user->id }} </td>
+                    <td class="px-6 py-4 border-b border-blue-500"> {{ $user->name }} </td>
+                    <td class="px-6 py-4 border-b border-blue-500"> {{ $user->email }} </td>
+                    <td class="px-6 py-4 border-b border-blue-500"> {{ $user->role }} </td>
 
                     <!-- ACTIONS -->
                     <td class="px-6 py-4 border-b border-blue-500">
@@ -72,6 +72,8 @@
                         </div>
                     </td>
                 </tr>
+
+                @endforeach
 
             </tbody>
         </table>
