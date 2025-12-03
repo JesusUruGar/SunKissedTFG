@@ -38,6 +38,16 @@ Route::get('/admin/users', [AdminController::class, 'indexUsers'])->name('admin.
 
 // Products
 Route::get('/admin/products', [AdminController::class, 'indexProducts'])->name('admin.products');
+Route::get('/admin/products/create', [AdminController::class, 'createProduct'])->name('admin.products.create');
+Route::get('/admin/products/edit/{id}', [AdminController::class, 'editProduct'])->name('admin.products.edit');
+Route::post('/admin/products/save/{id?}', [AdminController::class, 'saveProduct'])->name('admin.products.save');
+Route::delete('/admin/products/delete/{id}', [AdminController::class, 'deleteProduct'])->name('admin.products.delete');
+
+// Product Images
+Route::delete('/admin/product-images/{id}', [AdminController::class, 'destroyImage'])->name('product-images.destroy');
+Route::post('/admin/product-images/{id}/set-primary', [AdminController::class, 'setPrimaryImage'])->name('product-images.set-primary');
+Route::post('/admin/product-images/reorder', [AdminController::class, 'reorderImages'])->name('product-images.reorder');
+
 
 //----------------------------------------
 // Cart routes
