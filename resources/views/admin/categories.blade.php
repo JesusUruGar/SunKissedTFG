@@ -22,85 +22,48 @@
         <li aria-current="page">
             <div class="flex items-center space-x-1.5">
                 <svg class="w-3.5 h-3.5 rtl:rotate-180 text-body" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24"><path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m9 5 7 7-7 7"/></svg>
-                <span class="inline-flex items-center text-sm font-medium text-body-subtle">Productos</span>
+                <span class="inline-flex items-center text-sm font-medium text-body-subtle">Categorías</span>
             </div>
         </li>
     </ol>
     </nav>
 
-    <h1 class="text-4xl font-bold mt-3">Productos</h1>
+    <h1 class="text-4xl font-bold mt-3">Categorías</h1>
 
-    <!-- PRODUCTS TABLE -->
+    <!-- CATEGORIES TABLE -->
     <div class="mt-6 mb-4 overflow-x-auto shadow-md">
-        <table class="min-w-full border-2 border-orange-500">
-            <thead class="bg-orange-500 text-white">
+        <table class="min-w-full border-2 border-green-500">
+            <thead class="bg-green-500 text-white">
                 <tr>
-                    <th class="px-6 py-4 border-b border-orange-500 text-left">ID</th>
-                    <th class="px-6 py-4 border-b border-orange-500 text-left">Categoría</th>
-                    <th class="px-6 py-4 border-b border-orange-500 text-left">IMG</th>
-                    <th class="px-6 py-4 border-b border-orange-500 text-left">Nombre</th>
-                    <th class="px-6 py-4 border-b border-orange-500 text-left">Descripción</th>
-                    <th class="px-6 py-4 border-b border-orange-500 text-left">Precio</th>
-                    <th class="px-6 py-4 border-b border-orange-500 text-left">Stock</th>
-                    <th class="px-6 py-4 border-b border-orange-500 text-left">Acciones</th>
+                    <th class="px-6 py-4 border-b border-green-500 text-left">ID</th>
+                    <th class="px-6 py-4 border-b border-green-500 text-left">Nombre</th>
+                    <th class="px-6 py-4 border-b border-green-500 text-left">Descripción</th>
+                    <th class="px-6 py-4 border-b border-green-500 text-left">Acciones</th>
                 </tr>
             </thead>
             <tbody>
 
-                @foreach($products as $product)
+                @foreach($categories as $category)
 
                 <tr>
-                    <td class="px-6 py-4 border-b border-orange-500"> {{ $product->id }} </td>
-                    <td class="px-6 py-4 border-b border-orange-500"> {{ $product->category->name ?? 'Sin categoría' }} </td>
-
-                    <!-- IMAGE -->
-                    <td class="min-w-30 px-6 py-4 border-b border-orange-500">
-                        @if($product->images)
-                            <img src="{{ asset('images/products/' . ($product->primaryImage->image_path ?? $product->images->first()->image_path)) }}" alt="Imagen del producto" class="w-20 h-30 object-cover">
-                        @else
-                            <span class="text-sm text-body-subtle">No image</span>
-                        @endif
-                    </td>
-
-                    <td class="px-6 py-4 border-b border-orange-500"> {{ $product->name }} </td>
-                    <td class="px-6 py-4 border-b border-orange-500"> {{ $product->description }} </td>
-                    <td class="px-6 py-4 border-b border-orange-500"> {{ $product->price }}$ </td>
-
-                    <!-- STOCK -->
-                    <td class="min-w-25 px-6 py-4 border-b border-orange-500">
-                        <ul>
-                            @foreach ($product->stocks as $variant)
-                                <li class="mb-2">
-                                    <span class="font-bold">{{ $variant->size }}</span> - {{ $variant->quantity }}
-                                </li>
-                            @endforeach
-
-                        </ul>
-                    </td>
+                    <td class="px-6 py-4 border-b border-green-500"> {{ $category->id }} </td>
+                    <td class="px-6 py-4 border-b border-green-500"> {{ $category->name }} </td>
+                    <td class="px-6 py-4 border-b border-green-500"> {{ $category->description }} </td>
 
                     <!-- ACTIONS -->
-                    <td class="px-6 py-4 border-b border-orange-500">
+                    <td class="px-6 py-4 border-b border-green-500">
                         <div class="flex items-center gap-3">
 
                             <!-- EDIT -->
-                            <a href="{{ route('admin.products.edit', $product->id) }}" class="text-blue-500">
+                            <a href="{{ route('admin.categories.edit', ['id' => $category->id]) }}" class="text-blue-500">
                                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-7">
                                     <path d="M21.731 2.269a2.625 2.625 0 0 0-3.712 0l-1.157 1.157 3.712 3.712 1.157-1.157a2.625 2.625 0 0 0 0-3.712ZM19.513 8.199l-3.712-3.712-8.4 8.4a5.25 5.25 0 0 0-1.32 2.214l-.8 2.685a.75.75 0 0 0 .933.933l2.685-.8a5.25 5.25 0 0 0 2.214-1.32l8.4-8.4Z" />
                                     <path d="M5.25 5.25a3 3 0 0 0-3 3v10.5a3 3 0 0 0 3 3h10.5a3 3 0 0 0 3-3V13.5a.75.75 0 0 0-1.5 0v5.25a1.5 1.5 0 0 1-1.5 1.5H5.25a1.5 1.5 0 0 1-1.5-1.5V8.25a1.5 1.5 0 0 1 1.5-1.5h5.25a.75.75 0 0 0 0-1.5H5.25Z" />
                                 </svg>
                             </a>
 
-                            <!-- MANAGE STOCK -->
-                            <a href="" class="text-gray-500">
-                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-7">
-                                    <path d="M11.644 1.59a.75.75 0 0 1 .712 0l9.75 5.25a.75.75 0 0 1 0 1.32l-9.75 5.25a.75.75 0 0 1-.712 0l-9.75-5.25a.75.75 0 0 1 0-1.32l9.75-5.25Z" />
-                                    <path d="m3.265 10.602 7.668 4.129a2.25 2.25 0 0 0 2.134 0l7.668-4.13 1.37.739a.75.75 0 0 1 0 1.32l-9.75 5.25a.75.75 0 0 1-.71 0l-9.75-5.25a.75.75 0 0 1 0-1.32l1.37-.738Z" />
-                                    <path d="m10.933 19.231-7.668-4.13-1.37.739a.75.75 0 0 0 0 1.32l9.75 5.25c.221.12.489.12.71 0l9.75-5.25a.75.75 0 0 0 0-1.32l-1.37-.738-7.668 4.13a2.25 2.25 0 0 1-2.134-.001Z" />
-                                </svg>
-                            </a>
-
                             <!-- DELETE -->
-                            <form action="{{ route('admin.products.delete', $product->id) }}" method="POST" class="flex items-center">
+                            <form action="{{ route('admin.categories.delete', ['id' => $category->id]) }}" method="POST" class="flex items-center">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="text-red-500 cursor-pointer" onclick="return confirm('¿Estás seguro de que deseas eliminar este producto?')">
@@ -120,9 +83,9 @@
         </table>
     </div>
 
-    <!-- CREATE PRODUCT -->
+    <!-- CREATE CATEGORY -->
     <div class="flex mt-2">
-        <a href="{{ route('admin.products.create') }}" class="text-white bg-success box-border border border-transparent hover:bg-success-strong focus:ring-4 focus:ring-success-medium shadow-xs font-medium leading-5 text-sm px-4 py-2.5 focus:outline-none flex items-center gap-1">
+        <a href="{{ route('admin.categories.create') }}" class="text-white bg-success box-border border border-transparent hover:bg-success-strong focus:ring-4 focus:ring-success-medium shadow-xs font-medium leading-5 text-sm px-4 py-2.5 focus:outline-none flex items-center gap-1">
             Crear
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4">
                 <path fill-rule="evenodd" d="M12 3.75a.75.75 0 0 1 .75.75v6.75h6.75a.75.75 0 0 1 0 1.5h-6.75v6.75a.75.75 0 0 1-1.5 0v-6.75H4.5a.75.75 0 0 1 0-1.5h6.75V4.5a.75.75 0 0 1 .75-.75Z" clip-rule="evenodd" />

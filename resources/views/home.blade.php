@@ -21,7 +21,7 @@
         <!-- PRODUCTO -->
         <a href="{{ route('product', ['id' => $product->id]) }}">
 
-            <img src="{{ asset('images/products/' . $product->images->first()->image_path) }}" alt="Logo" class="hover:scale-105 transition-transform duration-300">
+            <img src="{{ asset('images/products/' . $product->primaryImage->image_path) }}" alt="Logo" class="hover:scale-105 transition-transform duration-300">
 
             <div class="flex justify-between items-center mt-2">
                 <h2 class="text-sm">{{ $product->name }}</h2>

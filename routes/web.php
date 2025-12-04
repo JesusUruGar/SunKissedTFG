@@ -48,6 +48,12 @@ Route::delete('/admin/product-images/{id}', [AdminController::class, 'destroyIma
 Route::post('/admin/product-images/{id}/set-primary', [AdminController::class, 'setPrimaryImage'])->name('product-images.set-primary');
 Route::post('/admin/product-images/reorder', [AdminController::class, 'reorderImages'])->name('product-images.reorder');
 
+// Categories
+Route::get('/admin/categories', [AdminController::class, 'indexCategories'])->name('admin.categories');
+Route::get('/admin/categories/create', [AdminController::class, 'createCategory'])->name('admin.categories.create');
+Route::get('/admin/categories/edit/{id}', [AdminController::class, 'editCategory'])->name('admin.categories.edit');
+Route::post('/admin/categories/save/{id?}', [AdminController::class, 'saveCategory'])->name('admin.categories.save');
+Route::delete('/admin/categories/delete/{id}', [AdminController::class, 'deleteCategory'])->name('admin.categories.delete');
 
 //----------------------------------------
 // Cart routes

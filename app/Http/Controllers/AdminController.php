@@ -131,5 +131,57 @@ class AdminController extends Controller
         return response()->json(['success' => true]);
     }
 
+    // Stock ----------------------------------------
+
+    public function indexStock()
+    {
+        // Implementation for stock management view
+    }
+
+    // Categories ----------------------------------------
+
+    public function indexCategories()
+    {
+        $categories = Category::all();
+
+        return view('admin.categories', compact('categories'));
+    }
+
+    public function createCategory()
+    {
+        return view('admin.categoriesEdit');
+    }
+
+    public function editCategory($id)
+    {
+        $category = Category::findOrFail($id);
+
+        return view('admin.categoriesEdit', compact('category'));
+    }
+
+    public function saveCategory(Request $request, $id = null)
+    {
+        if ($id) {
+            $category = Category::findOrFail($id);
+        } else {
+            $category = new Category();
+        }
+
+        $category->name = $request->name;
+        $category->description = $request->description;
+
+        $category->save();
+
+        return redirect()->route('admin.categories');
+    }
+
+    public function deleteCategory($id)
+    {
+        $category = Category::findOrFail($id);
+        $category->delete();
+
+        return redirect()->route('admin.categories');
+    }
+
 
 }
