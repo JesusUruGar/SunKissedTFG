@@ -48,6 +48,10 @@ Route::delete('/admin/product-images/{id}', [AdminController::class, 'destroyIma
 Route::post('/admin/product-images/{id}/set-primary', [AdminController::class, 'setPrimaryImage'])->name('product-images.set-primary');
 Route::post('/admin/product-images/reorder', [AdminController::class, 'reorderImages'])->name('product-images.reorder');
 
+// Stock Management
+Route::get('/admin/products/stock/{id}', [AdminController::class, 'indexStock'])->name('admin.stock');
+Route::post('/admin/products/stock/update/{id}', [AdminController::class, 'updateStock'])->name('admin.stock.update');
+
 // Categories
 Route::get('/admin/categories', [AdminController::class, 'indexCategories'])->name('admin.categories');
 Route::get('/admin/categories/create', [AdminController::class, 'createCategory'])->name('admin.categories.create');

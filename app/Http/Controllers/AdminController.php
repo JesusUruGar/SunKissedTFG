@@ -7,6 +7,7 @@ use App\Models\Product;
 use App\Models\User;
 use App\Models\Category;
 use App\Models\ProductImage;
+use App\Models\ProductStock;
 
 class AdminController extends Controller
 {
@@ -133,9 +134,38 @@ class AdminController extends Controller
 
     // Stock ----------------------------------------
 
-    public function indexStock()
+    public function indexStock($id)
     {
-        // Implementation for stock management view
+        $product = Product::findOrFail($id);
+
+        return view('admin.stock', compact('product'));
+    }
+
+    public function updateStock(Request $request, $id)
+    {
+        $product = Product::findOrFail($id);
+
+        $stock = ProductStock::where('product_id', $product->id);
+        if (!$stock) {
+            $stock = new ProductStock();
+            $stock->product_id = $product->id;
+        }
+
+        // Update stock quantities
+        foreach ($request->all() as $key => $value) {
+            if (preg_match('/stock_(\d+)/', $key, $match)) {
+                $id = $match[1];
+
+                $variant = ProductStock::find($id);
+                if ($variant) {
+                    $variant->quantity = $value;
+                    $variant->save();
+                }
+            }
+        }
+
+
+        return redirect()->route('admin.products');
     }
 
     // Categories ----------------------------------------
