@@ -56,7 +56,7 @@
                     <!-- IMAGE -->
                     <td class="min-w-30 px-6 py-4 border-b border-orange-500">
                         @if($product->images)
-                            <img src="{{ asset('images/products/' . ($product->primaryImage->image_path ?? $product->images->first()->image_path)) }}" alt="Imagen del producto" class="w-20 h-30 object-cover">
+                            <img src="{{ asset('images/products/' . ($product->primaryImage->image_path ?? ($product->images->first()->image_path ?? 'default.webp' ))) }}" alt="Imagen del producto" class="w-20 h-30 object-cover">
                         @else
                             <span class="text-sm text-body-subtle">No image</span>
                         @endif
