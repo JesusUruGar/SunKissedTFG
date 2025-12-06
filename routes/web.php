@@ -51,6 +51,10 @@ Route::post('/admin/product-images/reorder', [AdminController::class, 'reorderIm
 // Stock Management
 Route::get('/admin/products/stock/{id}', [AdminController::class, 'indexStock'])->name('admin.stock');
 Route::post('/admin/products/stock/update/{id}', [AdminController::class, 'updateStock'])->name('admin.stock.update');
+Route::get('/admin/products/stock/create/{id}', [AdminController::class, 'addStock'])->name('admin.stock.add');
+Route::get('/admin/products/stock/edit/{idProduct}/{idStock}', [AdminController::class, 'editStock'])->name('admin.stock.edit');
+Route::post('/admin/products/stock/save/{idProduct}/{idStock?}', [AdminController::class, 'saveStock'])->name('admin.stock.save');
+Route::delete('/admin/products/stock/delete/{idProduct}/{idStock}', [AdminController::class, 'deleteStock'])->name('admin.stock.delete');
 
 // Categories
 Route::get('/admin/categories', [AdminController::class, 'indexCategories'])->name('admin.categories');

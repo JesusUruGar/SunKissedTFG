@@ -168,6 +168,50 @@ class AdminController extends Controller
         return redirect()->route('admin.products');
     }
 
+    public function addStock($id)
+    {
+        $product = Product::findOrFail($id);
+
+        return view('admin.stockEdit', compact('product'));
+    }
+
+    public function editStock($id)
+    {
+        $stock = ProductStock::findOrFail($id);
+        $product = Product::findOrFail($stock->product_id);
+
+        return view('admin.stockEdit', compact('product', 'stock'));
+    }
+
+    public function saveStock(Request $request, $idProduct, $idStock = null)
+    {
+        $product = Product::findOrFail($idProduct);
+
+        if ($idStock) {
+            $stock = ProductStock::findOrFail($idStock);
+        } else {
+            $stock = new ProductStock();
+            $stock->product_id = $product->id;
+        }
+
+        $stock->size = $request->size;
+        $stock->quantity = 0; // Initial quantity set to 0
+
+        $stock->save();
+
+        return redirect()->route('admin.stock', $product->id);
+    }
+
+    public function deleteStock($idProduct, $idStock)
+    {
+        $product = Product::findOrFail($idProduct);
+
+        $stock = ProductStock::findOrFail($idStock);
+        $stock->delete();
+
+        return redirect()->route('admin.stock', $product->id);
+    }
+
     // Categories ----------------------------------------
 
     public function indexCategories()
