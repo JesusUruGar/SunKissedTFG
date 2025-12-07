@@ -60,7 +60,7 @@
             <p class="text-xl text-gray-700 mb-4">${{ $product->price }}</p>
             <p class="text-gray-600 mb-6">{{ $product->description }}</p>
 
-            <form action="">
+            <form id="add-to-cart-form">
 
                 <!-- SIZES -->
                 <fieldset>
@@ -100,8 +100,10 @@
 
     </div>
 
-    <!-- Script para manejar selección de tallas -->
+
     <script>
+
+        // SIZE SELECTION SCRIPT ------------------------------------------------
         document.querySelectorAll('input[name="size"]').forEach(radio => {
             radio.addEventListener('change', function () {
 
@@ -117,6 +119,29 @@
                 label.classList.remove('border-neutral-200');
             });
         });
+
+        // ADD TO CART SCRIPT ------------------------------------------------
+        document.getElementById('add-to-cart-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const size = document.querySelector('input[name="size"]:checked');
+            if (!size) {
+                alert("Por favor selecciona una talla.");
+                return;
+            }
+
+            const product = {
+                id: {{ $product->id }},
+                name: "{{ $product->name }}",
+                price: {{ $product->price }},
+                size: size.value,
+                quantity: 1,
+                image: "{{ count($product->images) > 0 ? $product->images[0]->image_path : '' }}"
+            };
+
+            addToCart(product); // <-- usa la función de cart.js
+        });
+
     </script>
 
     @endif
