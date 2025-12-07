@@ -8,7 +8,7 @@ class Address extends Model
 {
 
     protected $fillable = [
-        'user_id',
+        'order_id',
         'street',
         'city',
         'postal_code',
@@ -16,9 +16,9 @@ class Address extends Model
         'extra_details',
     ];
 
-    public function user()
+    public function order()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Order::class);
     }
 
 }

@@ -10,6 +10,8 @@ use App\Http\Controllers\SearchController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\CheckoutController;
+use App\Models\Order;
 
 //----------------------------------------
 // Primary routes
@@ -90,6 +92,19 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
 // Index
 Route::get('/cart', [CartController::class, 'index'])->name('cart.index');
+
+//----------------------------------------
+// Checkout routes
+//----------------------------------------
+
+Route::middleware('auth')->group(function () {
+
+    Route::get('/checkout', [CheckoutController::class, 'show'])->name('checkout.show');
+    Route::post('/checkout', [CheckoutController::class, 'process'])->name('checkout.process');
+    Route::get('/checkout/success/{order?}', [CheckoutController::class, 'success'])->name('checkout.success');
+
+});
+
 
 //----------------------------------------
 // Other routes

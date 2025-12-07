@@ -14,17 +14,17 @@ return new class extends Migration
         Schema::create('orders', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained()->cascadeOnDelete();
-            $table->integer('total_amount');
-            $table->string('status');
+            $table->decimal('total_amount', 10, 2);
+            $table->string('status')->default('pending');
             $table->timestamps();
         });
 
         Schema::create('order_items', function (Blueprint $table) {
             $table->id();
             $table->foreignId('order_id')->constrained()->cascadeOnDelete();
-            $table->foreignId('product_id')->nullable()->constrained()->nullOnDelete();
+            $table->foreignId('product_stock_id')->constrained()->cascadeOnDelete();
             $table->integer('quantity');
-            $table->integer('price');
+            $table->decimal('price', 10, 2);
             $table->timestamps();
         });
 
@@ -32,8 +32,20 @@ return new class extends Migration
             $table->id();
             $table->foreignId('order_id')->constrained()->cascadeOnDelete();
             $table->string('method');
-            $table->string('status');
-            $table->string('transaction_code');
+            $table->string('status')->default('pending');
+            $table->string('transaction_code')->nullable();
+            $table->timestamps();
+        });
+
+        // addresses
+        Schema::create('addresses', function (Blueprint $table) {
+            $table->id();
+            $table->foreignId('order_id')->constrained()->onDelete('cascade');
+            $table->string('street');
+            $table->string('city');
+            $table->string('postal_code');
+            $table->string('country');
+            $table->text('extra_details')->nullable();
             $table->timestamps();
         });
     }
@@ -46,5 +58,6 @@ return new class extends Migration
         Schema::dropIfExists('orders');
         Schema::dropIfExists('order_items');
         Schema::dropIfExists('payments');
+        Schema::dropIfExists('addresses');
     }
 };

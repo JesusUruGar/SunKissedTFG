@@ -36,7 +36,7 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        Schema::create('product_stock', function (Blueprint $table) {
+        Schema::create('product_stocks', function (Blueprint $table) {
             $table->id();
             $table->foreignId('product_id')->constrained()->cascadeOnDelete();
             $table->string('size');

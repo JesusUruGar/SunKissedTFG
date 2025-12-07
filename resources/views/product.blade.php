@@ -76,7 +76,7 @@
 
                             @else
                             <label class="flex justify-center items-center border border-neutral-200 shadow-xs size-10 hover:border-neutral-500 transition-colors duration-200">
-                                <input type="radio" name="size" value="{{ $stock->size }}" class="hidden"/>
+                                <input type="radio" name="size" value="{{ $stock->size }}" class="hidden" data-stock-id="{{ $stock->id }}"/>
                                 <span>{{ strtoupper($stock->size) }}</span>
                             </label>
                             @endif
@@ -132,6 +132,7 @@
 
             const product = {
                 id: {{ $product->id }},
+                stock_id: size.dataset.stockId,
                 name: "{{ $product->name }}",
                 price: {{ $product->price }},
                 size: size.value,

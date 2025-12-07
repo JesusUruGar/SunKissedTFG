@@ -29,9 +29,9 @@
                 Vaciar carrito
             </button>
 
-            <button class="px-4 py-2 bg-black text-white hover:bg-orange-600 cursor-pointer">
-                Finalizar compra
-            </button>
+            <a href="{{ route('checkout.show') }}" class="px-4 py-2 bg-black text-white hover:bg-orange-600 cursor-pointer">
+                Comprar
+            </a>
         </div>
     </div>
 

@@ -9,14 +9,14 @@ class OrderItem extends Model
 
     protected $fillable = [
         'order_id',
-        'product_id',
+        'product_stock_id',
         'quantity',
         'price',
     ];
 
-    public function product()
+    public function stock()
     {
-        return $this->belongsTo(Product::class);
+        return $this->belongsTo(ProductStock::class, 'product_stock_id');
     }
 
     public function order()
