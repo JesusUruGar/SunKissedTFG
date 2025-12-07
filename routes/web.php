@@ -51,6 +51,9 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
     // Users
     Route::get('/admin/users', [AdminController::class, 'indexUsers'])->name('admin.users');
+    Route::get('/admin/users/edit/{id}', [AdminController::class, 'editUser'])->name('admin.users.edit');
+    Route::post('/admin/users/save/{id}', [AdminController::class, 'saveUser'])->name('admin.users.save');
+    Route::delete('/admin/users/delete/{id}', [AdminController::class, 'deleteUser'])->name('admin.users.delete');
 
     // Products
     Route::get('/admin/products', [AdminController::class, 'indexProducts'])->name('admin.products');

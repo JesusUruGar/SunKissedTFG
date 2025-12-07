@@ -28,6 +28,34 @@ class AdminController extends Controller
         return view('admin.users', compact('users'));
     }
 
+    public function editUser($id)
+    {
+        $user = User::findOrFail($id);
+
+        return view('admin.usersEdit', compact('user'));
+    }
+
+    public function saveUser(Request $request, $id)
+    {
+        $user = User::findOrFail($id);
+
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->role = $request->role;
+
+        $user->save();
+
+        return redirect()->route('admin.users');
+    }
+
+    public function deleteUser($id)
+    {
+        $user = User::findOrFail($id);
+        $user->delete();
+
+        return redirect()->route('admin.users');
+    }
+
     // Products ----------------------------------------
 
     public function indexProducts()
