@@ -3,28 +3,28 @@
 @section('title', 'Pedido completado')
 
 @section('content')
-<div class="container py-5 flex flex-col items-center">
+<div class="container mx-auto py-5 flex flex-col items-center">
 
     <div class="text-center mb-7">
         <h1 class="text-2xl font-bold text-success">¡Gracias por tu pedido! 🎉</h1>
         <p class="text-neutral-500">Tu pedido #{{ $order->id }} se ha procesado correctamente.</p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-5 mx-4">
 
         <div>
             <!-- Resumen general -->
-            <div class="max-w-md mx-auto p-8 shadow mb-5">
-                <h4 class="fw-bold mb-3">Resumen del pedido</h4>
+            <div class="p-8 shadow mb-5">
+                <h4 class="text-xl font-bold text-heading mb-3">Resumen del pedido</h4>
 
-                <p><strong>Estado:</strong> {{ ucfirst($order->status) }}</p>
-                <p><strong>Fecha:</strong> {{ $order->created_at->format('d/m/Y H:i') }}</p>
-                <p><strong>Total pagado:</strong> €{{ number_format($order->total_amount, 2, ',', '.') }}</p>
+                    <p><span class="font-medium">Estado:</span> {{ ucfirst($order->status) }}</p>
+                    <p><span class="font-medium">Fecha:</span> {{ $order->created_at->format('d/m/Y H:i') }}</p>
+                    <p><span class="font-medium">Total pagado:</span> €{{ number_format($order->total_amount, 2, ',', '.') }}</p>
             </div>
 
             <!-- Dirección -->
-            <div class="max-w-md mx-auto p-8 shadow">
-                <h4 class="fw-bold mb-3">Dirección de envío</h4>
+            <div class="p-8 shadow">
+                <h4 class="text-xl font-bold text-heading mb-3">Dirección de envío</h4>
 
                 <p>{{ $order->address->street }}</p>
                 <p>{{ $order->address->city }} ({{ $order->address->postal_code }})</p>
@@ -37,10 +37,10 @@
         </div>
 
         <div>
-            <!-- Items -->
+            <!-- ITEMS -->
             <div class="max-w-xl mx-auto p-8 shadow mb-4">
 
-                <h4 class="fw-bold mb-3">Artículos comprados</h4>
+                <h4 class="text-xl font-bold text-heading mb-4">Artículos comprados</h4>
 
                 <div class="relative overflow-x-auto bg-neutral-primary-soft shadow-x border border-default">
                     <table class="w-full text-sm text-left rtl:text-right text-body">
@@ -74,13 +74,15 @@
             </div>
         </div>
 
+        <div class="flex">
+            <a href="{{ route('home') }}" class="flex justify-center items-center gap-2 bg-black text-white px-4 py-2 hover:bg-orange-600 transition-colors duration-200 cursor-pointer">
+                Volver a la tienda
+            </a>
+        </div>
+
     </div>
 
-    <div class="flex justify-center mt-4">
-        <a href="{{ route('home') }}" class="flex justify-center items-center gap-2 bg-black text-white px-4 py-2 hover:bg-orange-600 transition-colors duration-200 cursor-pointer">
-            Volver a la tienda
-        </a>
-    </div>
+
 
 </div>
 

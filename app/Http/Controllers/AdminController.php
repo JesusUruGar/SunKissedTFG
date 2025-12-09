@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Category;
 use App\Models\ProductImage;
 use App\Models\ProductStock;
+use App\Models\Order;
 
 class AdminController extends Controller
 {
@@ -285,5 +286,29 @@ class AdminController extends Controller
         return redirect()->route('admin.categories');
     }
 
+    // Orders ----------------------------------------
+
+    public function indexOrders()
+    {
+        $orders = Order::orderBy('id','desc')->paginate(10);
+
+        return view('admin.orders', compact('orders'));
+    }
+
+    public function viewOrder($id)
+    {
+        $order = Order::findOrFail($id);
+
+        return view('admin.orderView', compact('order'));
+    }
+
+    public function updateOrderStatus(Request $request, $id)
+    {
+        $order = Order::findOrFail($id);
+        $order->status = $request->status;
+        $order->save();
+
+        return redirect()->route('admin.orders');
+    }
 
 }

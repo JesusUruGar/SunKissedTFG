@@ -84,6 +84,11 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::post('/admin/categories/save/{id?}', [AdminController::class, 'saveCategory'])->name('admin.categories.save');
     Route::delete('/admin/categories/delete/{id}', [AdminController::class, 'deleteCategory'])->name('admin.categories.delete');
 
+    // Orders
+    Route::get('/admin/orders', [AdminController::class, 'indexOrders'])->name('admin.orders');
+    Route::get('/admin/orders/view/{id}', [AdminController::class, 'viewOrder'])->name('admin.orders.view');
+    Route::post('/admin/orders/update-status/{id}', [AdminController::class, 'updateOrderStatus'])->name('admin.orders.update-status');
+
 });
 
 //----------------------------------------
@@ -107,11 +112,14 @@ Route::middleware('auth')->group(function () {
 
 
 //----------------------------------------
-// Other routes
+// User routes
 //----------------------------------------
 
-// Search
-Route::get('/search', [SearchController::class, 'index'])->name('search');
+Route::middleware('auth')->group(function () {
 
-// User
-Route::get('/user', [UserController::class, 'index'])->name('user');
+    Route::get('/user/order-history', [UserController::class, 'orderHistory'])->name('user.order-history');
+    Route::get('/user/order/{id}', [UserController::class, 'viewOrder'])->name('user.order.view');
+
+});
+
+

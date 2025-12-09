@@ -29,10 +29,6 @@
             <div id="dropdownNavbar" class="z-100 hidden bg-neutral-primary-medium border border-default-medium shadow-lg w-44">
                 <ul class="p-2 text-sm text-body font-medium" aria-labelledby="dropdownNvbarButton">
 
-                    {{-- <li><a href="{{ route('user') }}" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading">
-                        Perfil
-                    </a></li> --}}
-
                     @guest
                         <li><a href="{{ route('show.login') }}" class="inline-flex items-center w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading">
                             Iniciar Sesión
@@ -44,6 +40,21 @@
                     @endguest
 
                     @auth
+
+                        <li><p class="inline-flex items-center w-full p-2">
+                            Hola, {{ auth()->user()->name }} 👋
+                        </p></li>
+
+                        <hr class="border-t border-gray-300 mx-1 mb-1">
+
+                        <li><a href="{{ route('user.order-history') }}" class="inline-flex items-center gap-1 w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading">
+                            Mis Pedidos
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-4">
+                                <path d="M3.375 4.5C2.339 4.5 1.5 5.34 1.5 6.375V13.5h12V6.375c0-1.036-.84-1.875-1.875-1.875h-8.25ZM13.5 15h-12v2.625c0 1.035.84 1.875 1.875 1.875h.375a3 3 0 1 1 6 0h3a.75.75 0 0 0 .75-.75V15Z" />
+                                <path d="M8.25 19.5a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0ZM15.75 6.75a.75.75 0 0 0-.75.75v11.25c0 .087.015.17.042.248a3 3 0 0 1 5.958.464c.853-.175 1.522-.935 1.464-1.883a18.659 18.659 0 0 0-3.732-10.104 1.837 1.837 0 0 0-1.47-.725H15.75Z" />
+                                <path d="M19.5 19.5a1.5 1.5 0 1 0-3 0 1.5 1.5 0 0 0 3 0Z" />
+                            </svg>
+                        </a></li>
 
                         @if (auth()->user()->isAdmin())
                             <li><a href="{{ route('admin.dashboard') }}" class="inline-flex items-center gap-1 w-full p-2 hover:bg-neutral-tertiary-medium hover:text-heading">
@@ -75,13 +86,6 @@
 
                 </ul>
             </div>
-
-            <!-- SEARCH -->
-            <li><a href="{{ route('search') }}" class="hover:text-orange-600">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="size-5.5">
-                    <path fill-rule="evenodd" d="M10.5 3.75a6.75 6.75 0 1 0 0 13.5 6.75 6.75 0 0 0 0-13.5ZM2.25 10.5a8.25 8.25 0 1 1 14.59 5.28l4.69 4.69a.75.75 0 1 1-1.06 1.06l-4.69-4.69A8.25 8.25 0 0 1 2.25 10.5Z" clip-rule="evenodd" />
-                </svg>
-            </a></li>
 
             <!-- CART -->
             <li><a href="{{ route('cart.index') }}" class="relative hover:text-orange-600">
