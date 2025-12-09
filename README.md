@@ -1,59 +1,72 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# SunKissed: Guía de despliegue
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## 1. Instalaciones previas
 
-## About Laravel
+Debemos asegurarnos de tener instalado en nuestro equipo lo siguiente:
+- XAMPP
+- Composer
+- Node.js
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## 2. Clonar repositorio
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Ya que estamos utilizando xampp, deberás clonar el repositorio en la carpeta "*xampp > htdocs*" 
+en el disco donde hayamos instalado xampp. Para ello nos situamos en la carpeta desde cualquier
+consola y escribimos `git clone https://github.com/JesusUruGar/SunKissedTFG.git`.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+## 3. Configurar vhost (opcional)
 
-## Learning Laravel
+Para trabajar mejor en local se recomienda hacer un host virtual. En mi caso
+lo configuro como "sunkissed.local". Por no hacer la guía innecesariamente larga, esta es la guía que he utilizado personalmente
+para crear mi host virtual:
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework. You can also check out [Laravel Learn](https://laravel.com/learn), where you will be guided through building a modern Laravel application.
+- [Guía VHOST](https://codersfree.com/posts/configurar-virtualhost-xampp-windows-guia-paso-a-paso)
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+## 4. Actualizar dependencias
 
-## Laravel Sponsors
+Una vez con el repositorio en la carpeta, nos situamos dentro desde nuestra consola y escribimos el comando `composer update`.
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
+## 5. Configurar ".env"
 
-### Premium Partners
+Cuando el proceso haya acabado tendremos que crear un archivo de entorno llamado "*.env*", del cuál se habrá generado un archivo de ejemplo llamado "*.env.example*" del que podemos tomar referencia y ajustar ciertos parámetros.
 
-- **[Vehikl](https://vehikl.com)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Redberry](https://redberry.international/laravel-development)**
-- **[Active Logic](https://activelogic.com)**
+Lo primero que haremos será configurar la base de datos. En el archivo buscaremos los apartados que comiencen por "*DB_*" y lo dejaremos de la siguiente manera:
 
-## Contributing
+```
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=sunkissed
+DB_USERNAME=root
+DB_PASSWORD=
+```
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+**⚠️IMPORTANTE:** Si tienes problemas con vite, puedes agregar esto último al final del archivo, configurandolo con la URL que estés usando:
 
-## Code of Conduct
+```
+VITE_DEV_SERVER_HOST=sunkissed.local
+VITE_DEV_SERVER_PORT=5173
+```
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+## 6. Preparar base de datos
 
-## Security Vulnerabilities
+Primero accedes al panel de "*phpMyAdmin*" por el enlace de "[phpMyAdmin](http://localhost/phpmyadmin)". Una vez ahí, en el apartado izquierdo das en "*Nueva*", y en el menú te aparece un apartado en el que te pide el nombre de la BBDD. La llamas "*sunkissed*" y creas la base de datos.
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+Una vez aquí tenemos 2 opciones para desplegar la BBDD:
+1. Insertando archivo SQL (*mantiene estructura y datos*).
+2. Haciendo las migraciones de laravel (*mantiene estructura pero sin datos*).
 
-## License
+Para el primer caso, seleccionamos la BBDD en el menú de la izquierda de "*phpMyAdmin*", buscamos el apartado "*Importar*" e importamos el archivo "*sunkissed.sql*" que se encuentra en la carpeta "*db*" del proyecto.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+Si no nos hacen falta los datos, entramos en la consola, nos situamos en la carpeta del proyecto y escribimos lo siguiente: `php artisan migrate`. Esto genera la estructura de tablas sin crear datos.
+
+## 7. Cargar los assets en tiempo real
+
+Para que los recursos se carguen correctamente durante el desarrollo, debemos abrir la consola situados en el proyecto y escribir el siguiente comando: `npm run dev`.
+
+**⚠️IMPORTANTE:** Este comando debe estar corriendo en todo momento de fondo para que se siga compilando mientras carguemos las vistas.
+
+## 8. Conclusión
+
+Si se han seguido los pasos correctamente, cada vez que encendamos los módulos "*Apache*" y "*MySQL*" de xampp y el comando del apartado anterior esté corriendo en la consola, el proyecto debería funcionar correctamente. En caso de que se me haya pasado algo o no funcione como debería, no dudes en escribirme.
+
+Un saludo y que tengas un buen día 👋.
