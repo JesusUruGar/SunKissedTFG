@@ -22,7 +22,12 @@
         <div id="accordion-card-body-1" class="hidden border border-t-0 border-default shadow-xs bg-white" aria-labelledby="accordion-card-heading-1">
             <div class="p-4 md:p-5">
 
-                <p class="mb-2 text-body"></p>
+                <p class="mb-2 text-body">
+                    Surge de la idea de mezclar conceptos de moda urbana actual con la
+                    cultura del sur y la costa. De ahí la idea de <span class="font-bold">SunKissed</span>,
+                    que traducido de forma literal sería "<span class="italic">Besado por el sol</span>".
+
+                </p>
 
             </div>
         </div>
@@ -37,7 +42,13 @@
         <div id="accordion-card-body-2" class="hidden border border-t-0 border-default shadow-xs bg-white" aria-labelledby="accordion-card-heading-2">
             <div class="p-4 md:p-5">
 
-                <p class="mb-2 text-body"></p>
+                <p class="mb-2 text-body">
+                    Muchos proyectos en españa repiten la misma formula de sudaderas, camisetas
+                    y otros productos con estampados calcados unos de otros.
+                    Sin embargo <span class="font-bold">SunKissed</span> busca traer frescura
+                    y evocar una cierta nostalgia a través de los diseños, materiales y cortes
+                    hechos a mano.
+                </p>
 
             </div>
         </div>
@@ -52,7 +63,14 @@
         <div id="accordion-card-body-3" class="hidden border border-t-0 border-default shadow-xs bg-white" aria-labelledby="accordion-card-heading-3">
             <div class="p-4 md:p-5">
 
-                <p class="mb-2 text-body"></p>
+                <p class="mb-2 text-body">
+                    Actualmente nos estamos centrando en traer pocos productos, pero con la mejor
+                    calidad posible y que realmente pensemos que merece la pena vender. Al fin y
+                    al cabo, esta marca no ha sido concebida como una macro-empresa que busque
+                    llegar a grandes masas, si no como una ventana a nuestra cultura y una forma
+                    de que la gente que se sienta identificada pueda expresarse a través de nuestras
+                    prendas.
+                </p>
 
             </div>
         </div>
